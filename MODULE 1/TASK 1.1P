@@ -1,0 +1,34 @@
+// C++ code
+//
+int sensor = 0;
+
+int output = 0;
+
+void setup()
+{
+  pinMode(2, INPUT);
+  Serial.begin(9600);
+
+  pinMode(13, OUTPUT);
+  pinMode(13, INPUT);
+}
+
+void loop()
+{
+  sensor = digitalRead(2);
+  Serial.println(sensor);
+  if (sensor == HIGH) {
+    digitalWrite(13, HIGH);
+    delay(500); // Wait for 500 millisecond(s)
+    output = digitalRead(13);
+    Serial.println(output);
+  } else {
+    digitalWrite(13, LOW);
+    delay(500); // Wait for 500 millisecond(s)
+  }
+
+  digitalWrite(13, LOW);
+  delay(500); // Wait for 500 millisecond(s)
+  output = digitalRead(13);
+  Serial.print(output);
+}
